@@ -1,85 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>WhatsApp Entry Points Demo</title>
+  <title>Contacto WhatsApp</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #0f172a;
-      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
     }
 
-    .card {
-      background: #020617;
-      padding: 30px;
-      border-radius: 12px;
-      width: 400px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    .container {
       text-align: center;
     }
 
     h1 {
+      color: white;
       margin-bottom: 20px;
     }
 
-    button {
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      background: #22c55e;
-      color: black;
-      font-size: 16px;
-      cursor: pointer;
+    a {
+      text-decoration: none;
     }
 
-    button:hover {
-      background: #16a34a;
+    .wa-button {
+      background: #25D366;
+      color: white;
+      padding: 18px 30px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .wa-button:hover {
+      transform: scale(1.05);
+      background: #1ebe5d;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>WA Entry Points</h1>
+  <div class="container">
+    <h1>¿Hablamos?</h1>
 
-    <button onclick="openWA('sales')">
-      Sales Flow
-    </button>
-
-    <button onclick="openWA('support')">
-      Support Flow
-    </button>
-
-    <button onclick="openWA('collections')">
-      Collections Flow
-    </button>
+    <a 
+      href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20hablar%20por%20WhatsApp" 
+      target="_blank"
+    >
+      <div class="wa-button">
+        💬 Hablar por WhatsApp
+      </div>
+    </a>
   </div>
-
-  <script>
-    const phone = "521XXXXXXXXXX"; // TU NÚMERO DE WHATSAPP BUSINESS
-
-    function openWA(flow) {
-      let text = "";
-
-      if (flow === "sales") {
-        text = "ENTRY_SALES";
-      } else if (flow === "support") {
-        text = "ENTRY_SUPPORT";
-      } else if (flow === "collections") {
-        text = "ENTRY_COLLECTIONS";
-      }
-
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank");
-    }
-  </script>
 
 </body>
 </html>
