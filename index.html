@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Contacto WhatsApp</title>
+  <title>WhatsApp Entry Button</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -10,30 +10,50 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      color: white;
     }
 
-    .container {
+    .card {
+      background: #020617;
+      padding: 30px;
+      border-radius: 12px;
+      width: 380px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
       text-align: center;
     }
 
     h1 {
-      color: white;
       margin-bottom: 20px;
     }
 
-    a {
-      text-decoration: none;
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #cbd5f5;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      margin-bottom: 10px;
     }
 
     .wa-button {
+      margin-top: 20px;
       background: #25D366;
       color: white;
-      padding: 18px 30px;
+      padding: 16px;
       border-radius: 50px;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      display: inline-block;
+      cursor: pointer;
       transition: transform 0.2s ease;
     }
 
@@ -41,22 +61,59 @@
       transform: scale(1.05);
       background: #1ebe5d;
     }
+
+    .hint {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>¿Hablamos?</h1>
+  <div class="card">
+    <h1>WhatsApp Entry</h1>
 
-    <a 
-      href="https://wa.me/521XXXXXXXXXX?text=Hola,%20quiero%20hablar%20por%20WhatsApp" 
-      target="_blank"
-    >
-      <div class="wa-button">
-        💬 Hablar por WhatsApp
-      </div>
-    </a>
+    <label># de Teléfono (con país)</label>
+    <input 
+      id="phoneInput" 
+      type="text" 
+      placeholder="Ej: 5215580418341"
+    />
+
+    <label>Mensaje inicial</label>
+    <input 
+      id="textInput" 
+      type="text" 
+      placeholder="Ej: Hola, quiero hablar por WhatsApp"
+    />
+
+    <div class="wa-button" onclick="openWA()">
+      💬 Hablar por WhatsApp
+    </div>
+
+    <div class="hint">
+      Tip: Puedes poner aquí tu trigger tipo <b>#ENTRY_WEB</b> o <b>ENTRY_SALES</b>
+    </div>
   </div>
+
+  <script>
+    function openWA() {
+      const phone = document.getElementById("phoneInput").value.trim();
+      const text = document.getElementById("textInput").value.trim();
+
+      if (!phone) {
+        alert("Por favor ingresa el número de teléfono.");
+        return;
+      }
+
+      const encodedText = encodeURIComponent(text || "Hola");
+      const url = `https://wa.me/${phone}?text=${encodedText}`;
+
+      window.open(url, "_blank");
+    }
+  </script>
 
 </body>
 </html>
+
